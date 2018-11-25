@@ -8,6 +8,12 @@ import CardContent from '@material-ui/core/CardContent';
 import './index.css';
 import axios from 'axios';
 import { InfoStock } from './InfoStock'
+import main from './css/main.css'
+import WebFont from 'webfontloader';
+
+WebFont.load({
+  google: {families: ["Sawarabi Mincho"]}
+});
 
 ReactDOM.render(
   <InfoStock />,document.getElementById('root')

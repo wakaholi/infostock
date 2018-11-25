@@ -12,7 +12,7 @@ export class InfoStock extends React.Component {
   constructor(props) {
     super(props);
     this.state= {
-      todos: [{id:0},{title:"title"}],
+      info: [{id:null, title:""}],
       nextId: 0
     };
   };
@@ -30,8 +30,28 @@ export class InfoStock extends React.Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        <AddInfo />
-        <List todos={this.state.todos} />
+        <AddInfo addInfo={this.addInfo}/>
+        <List info={this.state.info} deleteInfo={this.deleteInfo}/>
       </div>);
+  }
+
+  addInfo = title => {
+    if(this.state.info.length === 1) {
+      this.setState({
+      info: [...this.state.info, {id: 1, title: title}],
+      nextId: 1});
+    } else {
+    this.setState({
+      info: [...this.state.info, {id: this.state.nextId+1, title: title}],
+      nextId: this.state.nextId+1});
+    }
+  };
+
+  deleteInfo = id => {
+    this.setState({
+      info: this.state.info.filter(info => {
+        return info.id !== id;
+      })
+    });
   }
 }

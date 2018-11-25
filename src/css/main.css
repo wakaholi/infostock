@@ -1,0 +1,8 @@
+@fontface {
+  font-family: 'Sawarabi Mincho', sans-serif;
+  src: url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho')
+}
+
+body {
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
