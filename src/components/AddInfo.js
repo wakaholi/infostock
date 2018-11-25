@@ -1,9 +1,9 @@
 import React from 'react';
-import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import AddIcon from '@material-ui/icons/Add';
 
 export class AddInfo extends React.Component {
   constructor(props) {
@@ -17,11 +17,11 @@ export class AddInfo extends React.Component {
       <div style={{margin : '20px 20px 0px'}}>
         <Card>
           <CardContent>
-            <h2>AddInfo</h2>
+            <h2>メモを追加</h2>
             <form onSubmit={this.handleSubmit}>
-              <TextField id="standard-with-placeholder" value={this.state.title} placeholder="INPUT INFO" onChange={this.handleChange} required/>
-              <Button type="submit" variant="contained" color="secondary">
-                Add info
+              <TextField id="standard-with-placeholder" value={this.state.title} placeholder="メモの名前を入力" onChange={this.handleChange} required/>
+              <Button type="submit" variant="fab" mini color="primary" aria-label="add">
+                <AddIcon />
               </Button>
             </form>
           </CardContent>

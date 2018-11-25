@@ -2,6 +2,8 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
 
 export class List extends React.Component {
   constructor(props) {
@@ -11,24 +13,23 @@ export class List extends React.Component {
   render() {
     const info = this.props.info.map(info=>{
       if(info.id !== null) {
-        return <li key={info.id}>
-          {info.id} {info.title}
-          <Button variant="outlined" color="secondary" onClick={() => {this.props.deleteInfo(info.id)}} style={{marginLeft: "20px"}}>
-            Delete
-          </Button>
-        </li>
+        return <div style={{margin : '20px 20px 0px'}} className={info.id} key={info.id}>
+          <Card>
+            <CardContent>
+              <h2>{info.title}</h2>
+              <Button variant="fab" aria-label="Delete" onClick={() => {this.props.deleteInfo(info.id)}} style={{float: "right", marginBottom: "20px"}}>
+                <DeleteIcon />
+              </Button>
+              <Button variant="fab" color="primary" aria-label="add" onClick={() => {this.props.openModal()}} style={{float: "right", marginBottom: "20px", marginRight: "10px"}}>
+                <AddIcon />
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
       } else {
         return null
       }
     });
-    return (
-      <div style={{margin : '20px 20px 0px'}}>
-        <Card>
-          <CardContent>
-            <h2>Info</h2>
-            <ul>{info}</ul>
-          </CardContent>
-        </Card>
-      </div>);
+    return (info);
   }
 }
