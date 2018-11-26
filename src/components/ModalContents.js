@@ -59,8 +59,4 @@ export class ModalContent extends React.Component {
         );
     }
   }
-
-  handleSubmit = event => {
-    event.preventDefault();
-  };
 }

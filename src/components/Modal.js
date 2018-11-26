@@ -30,8 +30,8 @@ export class Modal extends React.Component {
      >
        <DialogTitle id="scroll-dialog-title">メモの種類を選択して情報を選択</DialogTitle>
        <DialogContent>
-         <form autoComplete="off">
-           <FormControl style={{minWidth: 120}}>
+         <form autoComplete="off" onSubmit={event => this.props.submitHandle(event, this.state.content)}>
+           <FormControl style={{minWidth: "100%"}}>
              <InputLabel htmlFor="content">content</InputLabel>
              <Select
                value={this.state.content}
@@ -54,4 +54,7 @@ export class Modal extends React.Component {
       </DialogContent>
      </Dialog>
   }
+
+
+
 }

@@ -38,7 +38,16 @@ export class InfoStock extends React.Component {
         </AppBar>
         <AddInfo addInfo={this.addInfo}/>
         <List info={this.state.info} deleteInfo={this.deleteInfo} openModal={this.openModal}/>
-        <Modal open={this.state.open} closeModal={this.closeModal} modalTextHandle={this.modalTextHandle} text={this.state.text} urlText={this.state.urlText} url={this.state.url} qiita={this.state.qiita}/>
+        <Modal
+          open={this.state.open}
+          closeModal={this.closeModal}
+          modalTextHandle={this.modalTextHandle}
+          submitHandle={this.submitHandle}
+          text={this.state.text}
+          urlText={this.state.urlText}
+          url={this.state.url}
+          qiita={this.state.qiita}
+          />
       </div>);
   }
 
@@ -82,5 +91,9 @@ export class InfoStock extends React.Component {
     } else if(content == "Qiita") {
       this.setState({qiita: str});
     }
+  }
+
+  submitHandle = (event, conten) => {
+    event.preventDefault();
   }
 }
