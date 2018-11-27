@@ -93,7 +93,7 @@ export class InfoStock extends React.Component {
     }
   }
 
-  submitHandle = (event, conten) => {
+  submitHandle = (event, content) => {
     event.preventDefault();
   }
 }
