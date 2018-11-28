@@ -48,7 +48,7 @@ export class Modal extends React.Component {
                <MenuItem value={"url"}>URL</MenuItem>
                <MenuItem value={"Qiita"}>Qiita</MenuItem>
              </Select>
-             <ModalContent content={this.state.content} modalTextHandle={this.props.modalTextHandle} text={this.props.text} urlText={this.props.urlText} url={this.props.url} qiita={this.props.qiita}/>
+             <ModalContent content={this.state.content} selectInfoHandle={this.props.selectInfoHandle} modalTextHandle={this.props.modalTextHandle} text={this.props.text} urlText={this.props.urlText} url={this.props.url} qiita={this.props.qiita}/>
            </FormControl>
          </form>
       </DialogContent>

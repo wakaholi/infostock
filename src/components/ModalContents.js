@@ -22,7 +22,7 @@ export class ModalContent extends React.Component {
         return (
           <div style={{marginTop: "20px"}}>
             <TextField id="standard-with-placeholder" value={this.props.qiita} placeholder="検索" onChange={event => this.props.modalTextHandle(event, this.props.content)} required />
-              <QiitaApi content={this.props.content} searchText={this.props.qiita}/>
+              <QiitaApi content={this.props.content} searchText={this.props.qiita} selectInfoHandle={this.props.selectInfoHandle}/>
               <Button
                 variant="outlined"
                 size="small"

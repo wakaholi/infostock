@@ -38,6 +38,7 @@ export class QiitaApi extends React.Component {
                       color="primary"
                       value={list.url}
                       className="checkedBox"
+                      onChange={event => this.props.selectInfoHandle(event, list.title, list.url)}
                     />
                   }
                   label={list.title}

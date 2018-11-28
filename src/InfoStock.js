@@ -18,7 +18,9 @@ export class InfoStock extends React.Component {
       urlText: "",
       url: "",
       qiita: "",
-      open: false
+      open: false,
+      infoList: [{id: null, info: []}],
+      infoSelect: []
     };
   };
 
@@ -47,6 +49,7 @@ export class InfoStock extends React.Component {
           urlText={this.state.urlText}
           url={this.state.url}
           qiita={this.state.qiita}
+          selectInfoHandle={this.selectInfoHandle}
           />
       </div>);
   }
@@ -93,7 +96,12 @@ export class InfoStock extends React.Component {
     }
   }
 
+  selectInfoHandle = (event, title, url) => {
+    console.log(event.checked);
+  };
+
   submitHandle = (event, content) => {
     event.preventDefault();
+
   }
 }
