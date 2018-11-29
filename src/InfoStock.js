@@ -96,8 +96,31 @@ export class InfoStock extends React.Component {
     }
   }
 
+// TODO
   selectInfoHandle = (event, title, url) => {
-    console.log(event.checked);
+
+    let alreadyFlg = false;
+
+    if(this.state.infoSelect.length > 0) {
+      for(var key in this.state.infoSelect) {
+
+        if(this.state.infoSelect[key].indexOf(title) !== -1) {
+          alreadyFlg = true;
+        }
+      }
+    }
+
+    console.log(this.state.infoSelect[0]);
+
+    if(alreadyFlg) {
+      this.setState({
+        infoSelect: this.state.infoSelect(infoSelect => {
+          return infoSelect.title !== title;
+        })
+      });
+    } else {
+      this.setState([...this.state.infoSelect, {title: title, url: url}]);
+    }
   };
 
   submitHandle = (event, content) => {
