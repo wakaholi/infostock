@@ -28,6 +28,7 @@ export class ModalContent extends React.Component {
                 size="small"
                 color="primary"
                 aria-label="add"
+                onClick={event => this.props.pushList(event, this.props.content)}
                 >
                 push
               </Button>

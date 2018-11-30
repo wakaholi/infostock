@@ -30,7 +30,7 @@ export class Modal extends React.Component {
      >
        <DialogTitle id="scroll-dialog-title">メモの種類を選択して情報を選択</DialogTitle>
        <DialogContent>
-         <form autoComplete="off" onSubmit={event => this.props.submitHandle(event, this.state.content)}>
+         <form autoComplete="off" onSubmit={event => this.props.submitHandle(event)}>
            <FormControl style={{minWidth: "100%"}}>
              <InputLabel htmlFor="content">content</InputLabel>
              <Select
@@ -48,7 +48,16 @@ export class Modal extends React.Component {
                <MenuItem value={"url"}>URL</MenuItem>
                <MenuItem value={"Qiita"}>Qiita</MenuItem>
              </Select>
-             <ModalContent content={this.state.content} selectInfoHandle={this.props.selectInfoHandle} modalTextHandle={this.props.modalTextHandle} text={this.props.text} urlText={this.props.urlText} url={this.props.url} qiita={this.props.qiita}/>
+             <ModalContent
+               content={this.state.content}
+               selectInfoHandle={this.props.selectInfoHandle}
+               modalTextHandle={this.props.modalTextHandle}
+               text={this.props.text}
+               urlText={this.props.urlText}
+               url={this.props.url}
+               qiita={this.props.qiita}
+               pushList={this.props.pushList}
+               />
            </FormControl>
          </form>
       </DialogContent>

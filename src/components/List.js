@@ -20,7 +20,7 @@ export class List extends React.Component {
               <Button variant="fab" aria-label="Delete" onClick={() => {this.props.deleteInfo(info.id)}} style={{float: "right", marginBottom: "20px"}}>
                 <DeleteIcon />
               </Button>
-              <Button variant="fab" color="primary" aria-label="add" onClick={() => {this.props.openModal()}} style={{float: "right", marginBottom: "20px", marginRight: "10px"}}>
+              <Button variant="fab" color="primary" aria-label="add" onClick={() => {this.props.openModal(info.id)}} style={{float: "right", marginBottom: "20px", marginRight: "10px"}}>
                 <AddIcon />
               </Button>
             </CardContent>

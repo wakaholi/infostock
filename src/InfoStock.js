@@ -11,7 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 export class InfoStock extends React.Component {
   constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       info: [{id:null, title:""}],
       nextId: 0,
       text: "",
@@ -20,7 +20,9 @@ export class InfoStock extends React.Component {
       qiita: "",
       open: false,
       infoList: [{id: null, info: []}],
-      infoSelect: []
+      infoSelect: [{title:"", url:""}],
+      listInInfo: [{id: "", infoList: []}],
+      nowEditListId: null
     };
   };
 
@@ -39,7 +41,7 @@ export class InfoStock extends React.Component {
           </Toolbar>
         </AppBar>
         <AddInfo addInfo={this.addInfo}/>
-        <List info={this.state.info} deleteInfo={this.deleteInfo} openModal={this.openModal}/>
+        <List listInInfo={this.state.listInInfo} info={this.state.info} deleteInfo={this.deleteInfo} openModal={this.openModal}/>
         <Modal
           open={this.state.open}
           closeModal={this.closeModal}
@@ -50,6 +52,7 @@ export class InfoStock extends React.Component {
           url={this.state.url}
           qiita={this.state.qiita}
           selectInfoHandle={this.selectInfoHandle}
+          pushList={this.pushList}
           />
       </div>);
   }
@@ -74,13 +77,16 @@ export class InfoStock extends React.Component {
     });
   };
 
-  openModal = () => {
+  openModal = id => {
     this.setState({open: true});
+    this.setState({nowEditListId: id});
   };
 
   closeModal = () => {
     this.setState({open: false});
     this.setState({text: "", urlText: "", url: "", qiita: ""});
+    this.setState({nowEditListId: null});
+    this.setState({infoSelect: [{title:"", url:""}]});
   };
 
   modalTextHandle = (event, content) => {
@@ -96,35 +102,50 @@ export class InfoStock extends React.Component {
     }
   }
 
-// TODO
   selectInfoHandle = (event, title, url) => {
 
     let alreadyFlg = false;
 
-    if(this.state.infoSelect.length > 0) {
-      for(var key in this.state.infoSelect) {
+    if(this.state.infoSelect.length > 1) {
+      for(let key in this.state.infoSelect) {
 
-        if(this.state.infoSelect[key].indexOf(title) !== -1) {
+        if(this.state.infoSelect[key].title.indexOf(title) !== -1) {
           alreadyFlg = true;
         }
       }
+    } else {
+      this.setState({infoSelect: [...this.state.infoSelect, {title: title, url: url}]});
+      return;
     }
-
-    console.log(this.state.infoSelect[0]);
 
     if(alreadyFlg) {
       this.setState({
-        infoSelect: this.state.infoSelect(infoSelect => {
+        infoSelect: this.state.infoSelect.filter(infoSelect => {
           return infoSelect.title !== title;
         })
       });
     } else {
-      this.setState([...this.state.infoSelect, {title: title, url: url}]);
+      this.setState({infoSelect: [...this.state.infoSelect, {title: title, url: url}]});
     }
   };
 
+  // Enterによるサブミット防止処理
   submitHandle = (event, content) => {
     event.preventDefault();
+  }
 
+  pushList = (event, content) => {
+
+    switch(content) {
+      case "Qiita":
+          this.setState({listInInfo: [...this.state.listInInfo, {id: this.state.nowEditListId, infoList: this.state.infoSelect}]});
+        break;
+      case "Text":
+        break;
+      case "url":
+        break;
+    }
+    console.log(this.state.listInInfo);
+    this.closeModal();
   }
 }
