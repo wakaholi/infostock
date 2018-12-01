@@ -7,7 +7,7 @@ export class ListInInfo extends React.Component {
 
   render() {
       const makeInfoList = this.props.listInInfo.filter(listInInfo => {
-        return listInInfo.id === this.props.infoId || listInInfo.id !== ""
+        return listInInfo.id === this.props.infoId && listInInfo.id !== ""
       });
 
       let makeSmallInfoList = [];
