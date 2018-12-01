@@ -4,6 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
+import {ListInInfo} from './ListInInfo'
 
 export class List extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export class List extends React.Component {
           <Card>
             <CardContent>
               <h2>{info.title}</h2>
+              <ListInInfo infoId={info.id} listInInfo={this.props.listInInfo} />
               <Button variant="fab" aria-label="Delete" onClick={() => {this.props.deleteInfo(info.id)}} style={{float: "right", marginBottom: "20px"}}>
                 <DeleteIcon />
               </Button>

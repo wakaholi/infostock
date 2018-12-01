@@ -73,7 +73,10 @@ export class InfoStock extends React.Component {
     this.setState({
       info: this.state.info.filter(info => {
         return info.id !== id;
-      })
+      }),
+      listInInfo: this.state.listInInfo.filter(listInInfo => {
+        return listInInfo.id !== id;
+      }),
     });
   };
 
@@ -138,11 +141,13 @@ export class InfoStock extends React.Component {
 
     switch(content) {
       case "Qiita":
-          this.setState({listInInfo: [...this.state.listInInfo, {id: this.state.nowEditListId, infoList: this.state.infoSelect}]});
+        this.setState({listInInfo: [...this.state.listInInfo, {id: this.state.nowEditListId, infoList: this.state.infoSelect}]});
         break;
       case "Text":
+        this.setState({listInInfo: [...this.state.listInInfo, {id: this.state.nowEditListId, infoList: [{title: "", url: ""}, {title: this.state.text, url: ""}]}]});
         break;
       case "url":
+        this.setState({listInInfo: [...this.state.listInInfo, {id: this.state.nowEditListId, infoList: [{title: "", url: ""}, {title: this.state.urlText, url:this.state.url}]}]});
         break;
     }
     console.log(this.state.listInInfo);

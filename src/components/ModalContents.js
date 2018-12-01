@@ -45,6 +45,16 @@ export class ModalContent extends React.Component {
             onChange={event => this.props.modalTextHandle(event, this.props.content)}
             required
             value={this.props.text}/>
+            <Button
+              variant="outlined"
+              size="small"
+              color="primary"
+              aria-label="add"
+              style={{display: "block"}}
+              onClick={event => this.props.pushList(event, this.props.content)}
+              >
+              push
+            </Button>
           </div>
         );
       case "url":
@@ -60,6 +70,16 @@ export class ModalContent extends React.Component {
             label="URL"
             onChange={event => this.props.modalTextHandle(event, this.props.content)}
             required />
+            <Button
+              variant="outlined"
+              size="small"
+              color="primary"
+              aria-label="add"
+              style={{display: "block"}}
+              onClick={event => this.props.pushList(event, this.props.content)}
+              >
+              push
+            </Button>
           </div>
         );
       default:
