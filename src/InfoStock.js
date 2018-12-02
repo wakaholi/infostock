@@ -141,16 +141,24 @@ export class InfoStock extends React.Component {
 
     switch(content) {
       case "Qiita":
+        if(this.state.infoSelect.length === 1) {
+          return;
+        }
         this.setState({listInInfo: [...this.state.listInInfo, {id: this.state.nowEditListId, infoList: this.state.infoSelect}]});
         break;
       case "Text":
+        if(this.state.text === "") {
+          return;
+        }
         this.setState({listInInfo: [...this.state.listInInfo, {id: this.state.nowEditListId, infoList: [{title: "", url: ""}, {title: this.state.text, url: ""}]}]});
         break;
       case "url":
+        if(this.state.urlText === "" || this.state.url === "") {
+          return;
+        }
         this.setState({listInInfo: [...this.state.listInInfo, {id: this.state.nowEditListId, infoList: [{title: "", url: ""}, {title: this.state.urlText, url:this.state.url}]}]});
         break;
     }
-    console.log(this.state.listInInfo);
     this.closeModal();
   }
 }
