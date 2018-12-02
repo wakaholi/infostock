@@ -24,10 +24,12 @@ export class ModalContent extends React.Component {
             <TextField id="standard-with-placeholder" value={this.props.qiita} placeholder="検索" onChange={event => this.props.modalTextHandle(event, this.props.content)} required />
               <QiitaApi content={this.props.content} searchText={this.props.qiita} selectInfoHandle={this.props.selectInfoHandle}/>
               <Button
+                className="qiitaButton"
                 variant="outlined"
                 size="small"
                 color="primary"
                 aria-label="add"
+                style={{display: "none"}}
                 onClick={event => this.props.pushList(event, this.props.content)}
                 >
                 push

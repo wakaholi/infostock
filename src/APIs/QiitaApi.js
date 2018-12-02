@@ -51,12 +51,16 @@ export class QiitaApi extends React.Component {
   };
 
   search = (event, contents, str) => {
-    event.preventDefault();
+    if(str === "") {
+      return;
+    }
     const params = { page: 1, per_page: 20, query: str };
     const url = 'https://qiita.com/api/v2/items';
     axios.get(url, { params })
     .then( response => {
       this.setState({qiitaContents: response.data})
+      let qiitaButton = document.getElementsByClassName("qiitaButton");
+      qiitaButton[0].style.display = "block";
     })
   };
 
