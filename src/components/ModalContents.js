@@ -46,6 +46,7 @@ export class ModalContent extends React.Component {
             margin="normal"
             onChange={event => this.props.modalTextHandle(event, this.props.content)}
             required
+            className="textErrorMessage"
             value={this.props.text}/>
             <Button
               variant="outlined"
