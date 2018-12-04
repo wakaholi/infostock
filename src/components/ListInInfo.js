@@ -30,7 +30,7 @@ export class ListInInfo extends React.Component {
               if(smallListMap.url !== "") {
                 return(
                   <li>
-                    <a href={smallListMap.url} target="blank">{smallListMap.title}</a>
+                    <a href={smallListMap.url} target="blank">{smallListMap.title}</a><button onClick={() => this.props.todoDelete(this.props.infoId, smallListMap.url)}>delete</button>
                   </li>
                 );
               } else {

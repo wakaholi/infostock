@@ -41,7 +41,7 @@ export class InfoStock extends React.Component {
           </Toolbar>
         </AppBar>
         <AddInfo addInfo={this.addInfo}/>
-        <List listInInfo={this.state.listInInfo} info={this.state.info} deleteInfo={this.deleteInfo} openModal={this.openModal}/>
+        <List todoDelete={this.todoDelete} listInInfo={this.state.listInInfo} info={this.state.info} deleteInfo={this.deleteInfo} openModal={this.openModal}/>
         <Modal
           open={this.state.open}
           closeModal={this.closeModal}
@@ -160,5 +160,9 @@ export class InfoStock extends React.Component {
         break;
     }
     this.closeModal();
-  }
+  };
+
+  todoDelete = (id, url) => {
+    
+  };
 }

@@ -18,7 +18,7 @@ export class List extends React.Component {
           <Card>
             <CardContent>
               <h2>{info.title}</h2>
-              <ListInInfo infoId={info.id} listInInfo={this.props.listInInfo} />
+              <ListInInfo todoDelete={this.props.todoDelete} infoId={info.id} listInInfo={this.props.listInInfo} />
               <Button variant="fab" aria-label="Delete" onClick={() => {this.props.deleteInfo(info.id)}} style={{float: "right", marginBottom: "20px"}}>
                 <DeleteIcon />
               </Button>
